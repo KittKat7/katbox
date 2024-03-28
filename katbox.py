@@ -7,7 +7,8 @@ import subprocess
 args: list[str] = sys.argv[1:]
 
 helpString = """
-passgen
+passgen [length (defaults to 10)]
+primefind [numberOfPrimes (defaults to 10)]
 """
 
 if "-h" in args or "--help" in args:
