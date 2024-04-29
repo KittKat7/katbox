@@ -26,7 +26,7 @@ then
 	echo "COMPLETE"
 elif [ $CONFIRM == "u" ]
 then
-	rm ~/opt/katbox
+	rm -fr ~/opt/katbox
 	unlink ~/.local/bin/katbox
 fi
 
