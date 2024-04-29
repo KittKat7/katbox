@@ -27,7 +27,7 @@ then
 elif [ $CONFIRM == "u" ]
 then
 	rm ~/opt/katbox
-	unlink ~/.lical/bin/katbox
+	unlink ~/.local/bin/katbox
 fi
 
 
