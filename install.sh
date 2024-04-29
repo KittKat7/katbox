@@ -4,11 +4,15 @@ TEXT="
 KatBox Installer
 -----------------
 This will install files into ~/opt/katbox/ and will add a file in ~/.local/bin to start the program.
+
+i: install
+u: uninstall
+c: cancel
 "
 echo "$TEXT"
 
-read -p "Confirm? [Y/n]: " CONFIRM
-if [ -z $CONFIRM ] || [ $CONFIRM == "y" ]
+read -p "Confirm? [I/u/c]: " CONFIRM
+if [ -z $CONFIRM ] || [ $CONFIRM == "i" ]
 then
 	mkdir ~/opt
 	mkdir ~/opt/katbox
@@ -20,6 +24,10 @@ then
 	chmod +x ~/.local/bin/katbox
 
 	echo "COMPLETE"
+elif [ $CONFIRM == "u" ]
+then
+	rm ~/opt/katbox
+	unlink ~/.lical/bin/katbox
 fi
 
 
