@@ -25,7 +25,7 @@ if args[0] == "-h" or args[0] == "--help":
 	print(helpString)
 	sys.exit()
 elif args[0].lower() == "modify":
-	subprocess.run(["bash", "install.sh"], cwd=path)
+	subprocess.run(["bash", "installer.sh"], cwd=path)
 	sys.exit()
 #if/elif
 
