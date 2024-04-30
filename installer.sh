@@ -3,7 +3,7 @@
 TEXT="
 KatBox Installer
 -----------------
-This will install files into ~/opt/katbox/ and will add a file in ~/.local/bin to start the program.
+This will install files into ~/.local/opt/katbox/ and will add a file in ~/.local/bin to start the program.
 
 i: install/update
 r: remove from system
@@ -25,7 +25,7 @@ then
 		git pull;
 	fi;
 
-	if ! [ -f "~/.local/bin/katbox" ]; then printf '#!/bin/bash\npython ~/opt/katbox/katbox.py $@' > ~/.local/bin/katbox; fi;
+	if ! [ -f "~/.local/bin/katbox" ]; then printf '#!/bin/bash\npython ~/.local/opt/katbox/katbox.py $@' > ~/.local/bin/katbox; fi;
 
 	chmod +x ~/.local/bin/katbox
 
