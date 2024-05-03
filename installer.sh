@@ -14,18 +14,17 @@ echo "$TEXT"
 read -p "Confirm? [I/r/c]: " CONFIRM
 if [ -z $CONFIRM ] || [ $CONFIRM == "i" ];
 then
-	if ! [ -d "~/.local/opt" ]; then mkdir ~/.local/opt; fi;
-	if ! [ -d "~/.local/bin" ]; then mkdir ~/.local/bin; fi;
+	if [ ! -d ~/.local/bin ]; then mkdir -p ~/.local/bin; fi;
 	
-	if ! [ -d "~/.local/opt/katbox" ]; then
-		mkdir ~/.local/opt/katbox;
+	if [ ! -d ~/.local/opt/katbox ]; then
+		mkdir -p ~/.local/opt/katbox;
 		git clone https://github.com/KittKat7/katbox.git ~/.local/opt/katbox;
 	else
 		cd ~/.local/opt/katbox;
 		git pull;
 	fi;
 
-	if ! [ -f "~/.local/bin/katbox" ]; then printf '#!/bin/bash\npython ~/.local/opt/katbox/katbox.py $@' > ~/.local/bin/katbox; fi;
+	if [ ! -f ~/.local/bin/katbox ]; then printf '#!/bin/bash\npython ~/.local/opt/katbox/katbox.py $@' > ~/.local/bin/katbox; fi;
 
 	chmod +x ~/.local/bin/katbox
 
