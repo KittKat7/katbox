@@ -19,6 +19,7 @@ KatBox tools
 modify          : Upgrade, or remove KatBox
 passgen [LEN]   : Generate a password of LEN characters. Defaults to a length of 10.
 primefind [NUM] : Print out NUM of prime numbers. Defaults to 10 primes.
+baseconvert     : Convert a number from one base to another base. (Useful for Swanson's quizzes)
 """
 
 if args[0] == "-h" or args[0] == "--help":
