@@ -1,18 +1,19 @@
 import string
 import random
-import sys
 
-length = 0
-try:
-    length = int(sys.argv[1])
-except:
-    length = 24
-
-characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!+-_*?%.{}~'
-
-def generate_password(length):
+def generate_password(length: int):
     #characters = string.ascii_letters + string.digits + string.punctuation
+    characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!+-_*?%.{}~'
     password = ''.join(random.choice(characters) for i in range(length))
     return password
 
-print(generate_password(length))
+
+def main(args: list[str]):
+    length = 0
+    try:
+        length = int(args[0])
+    except:
+        length = 24
+
+
+    print(generate_password(length))

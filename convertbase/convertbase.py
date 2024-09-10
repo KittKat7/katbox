@@ -1,3 +1,4 @@
+import sys
 """
 --- Base Convert ---
 Convert any number to a given base, (up to base 16/hexadecimal).
@@ -7,12 +8,6 @@ If no oldbase is provided, the default will be 10.
 number[_oldbase]-newbase
 TODO
 """
-import sys
-args = sys.argv[1:]
-
-if "-h" in args or "--help" in args:
-    print(__doc__)
-    sys.exit()
 
 ack = {"A": "10", "B": "11", "C": "12", "D": "13", "E": "14", "F": "15"}
 kca = {"10": "A", "11": "B", "12": "C", "13": "D", "14": "E", "15": "F"}
@@ -54,7 +49,7 @@ def mult(num, base):
     
     return out
 
-def main():
+def main(args: list[str]):
     swanson: bool = False
     if "--swanson" in args:
         swanson = True

@@ -3,34 +3,52 @@ import sys
 import os
 import subprocess
 
-APPLETS: list[str] = ["passgen","primefind"]
+import passgen.passgen as passgen
+import primefind.primefind as primefind
+import convertbase.convertbase as convertbase
 
-args: list[str] = sys.argv[1:]
-if len(args) < 1:
-	args = ["-h"]
-#if
+class KatBox:
+    targets: dict[str, list[object]] = {
+        "--help,-h": [None, "\n\t Display help message"],
+        "--modify,-m": [None, "\n\t Shows install dialogue, allows installing, upgrading, or removing. (Install and upgrade are from github)"],
+        "passgen": [passgen, "[LEN] \n\t Generates a password of length LEN, or defaults to 10"],
+        "primefind": [primefind, "[LEN] \n\t Prints out LEN prime numbers, defaults to 10"],
+        "convertbase": [convertbase, "{NUM}[_BASE] {NEWBASE} \n\t Converts NUM of base BASE or 10 to the same number in base NEWBASE"],
+        "dice": [None, "[NUM1, NUM2, ..., NUMn] \n\t For every NUM, generates a random number between (including) 1 and NUM"],
+    }
 
-path = os.path.dirname(os.path.realpath(__file__)) 
+    @staticmethod
+    def helpStr() -> str:
+        string: str = ""
+        for key in list(KatBox.targets.keys()):
+            string += f"{key} {KatBox.targets[key][1]}\n"
+        return string
+    #helpStr
 
-helpString = f"""
-KatBox tools
+    @staticmethod
+    def main(args: list[str]):
 
--h, --help      : Show this help text
-modify          : Upgrade, or remove KatBox
-passgen [LEN]   : Generate a password of LEN characters. Defaults to a length of 10.
-primefind [NUM] : Print out NUM of prime numbers. Defaults to 10 primes.
-convertbase     : Convert a number from one base to another base. (Useful for Swanson's quizzes)
-"""
+        args: list[str] = args[1:]
+        if len(args) < 1:
+            args = ["-h"]
+        #if
 
-if args[0] == "-h" or args[0] == "--help":
-	print(helpString)
-	sys.exit()
-elif args[0].lower() == "modify":
-	subprocess.run(["bash", "installer.sh"], cwd=path)
-	sys.exit()
-#if/elif
+        path = os.path.dirname(os.path.realpath(__file__)) 
 
-args = ["python"] + args
-args[1] = "" + args[1] + "/" + args[1] + ".py"
+        if args[0] == "-h" or args[0] == "--help":
+            print(KatBox.helpStr())
+            sys.exit()
+        elif args[0].lower() == "--modify":
+            subprocess.run(["bash", "installer.sh"], cwd=path)
+            sys.exit()
+        elif args[0][0] == "-":
+            sys.exit()
+        #if/elif
 
-subprocess.run(args, cwd=path)
+        if args[0] in list(KatBox.targets.keys()):
+            KatBox.targets[args[0]][0].main(args[1:])
+        #if
+    #main
+#KatBox
+
+KatBox.main(sys.argv)
