@@ -63,11 +63,11 @@ def main(args: list[str]):
 
     try:
         if "_" in inp:
-            num = int(inp.split("_")[0])
+            num = inp.split("_")[0]
             obase = int(inp.split("_")[1].split("-")[0])
             nbase = int(inp.split("_")[1].split("-")[1])
         else:
-            num = int(inp.split("-")[0])
+            num = inp.split("-")[0]
             nbase = int(inp.split("-")[1])
             obase = 10
     except:
