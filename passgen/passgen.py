@@ -13,7 +13,7 @@ def main(args: list[str]):
     try:
         length = int(args[0])
     except:
-        length = 24
+        length = 16
 
 
     print(generate_password(length))

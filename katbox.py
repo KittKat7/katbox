@@ -11,7 +11,7 @@ class KatBox:
     targets: dict[str, list[object]] = {
         "--help,-h": [None, "\n\t Display help message"],
         "--modify,-m": [None, "\n\t Shows install dialogue, allows installing, upgrading, or removing. (Install and upgrade are from github)"],
-        "passgen": [passgen, "[LEN] \n\t Generates a password of length LEN, or defaults to 10"],
+        "passgen": [passgen, "[LEN] \n\t Generates a password of length LEN, or defaults to 16"],
         "primefind": [primefind, "[LEN] \n\t Prints out LEN prime numbers, defaults to 10"],
         "convertbase": [convertbase, "{NUM}[_BASE] {NEWBASE} \n\t Converts NUM of base BASE or 10 to the same number in base NEWBASE"],
         "dice": [None, "[NUM1, NUM2, ..., NUMn] \n\t For every NUM, generates a random number between (including) 1 and NUM"],
